@@ -178,5 +178,5 @@ In order to ensure continuity past points are copied to the new trajectory (line
 
 As you can see in the picture below the car drives 7.01 miles without any incident. 
 
-[Screenshot of car driving wihtout incidences](screenshot-no-incidences.png)
+[Screenshot of car driving wihtout incidences](screenshot-no-incidences.png =250x)
 
