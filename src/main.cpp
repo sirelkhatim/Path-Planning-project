@@ -114,36 +114,32 @@ int main() {
                     {
                         //Do some logic here, lower reference velocity so we don't crash into the car infront of us
                         // also flag to try to change lanes
-                        //ref_vel = 29.5;//mph
+                        ref_vel -= 0.7;
                         too_close = true;
                         if(lane == 1)
                         {
                             lane = 0;
-                        }else if(lane == 2){
-                          ref_vel -= 0.7;
-                        }else if(lane == 0){
-                          ref_vel -= 0.7;
                         }
                     }
                 }
             }
 
+          double speed_diff = 0;
+          const double MAX_SPEED = 49.5;
+          const double MAX_ACC = 0.224;
+          
            if(too_close)
             {
                 ref_vel -= 0.7;
             }
-            else if(ref_vel < 49.5)
+            else if(ref_vel < MAX_SPEED)
             {
-                ref_vel += 0.224;
+                ref_vel += MAX_ACC;
             }
             
 
-          double speed_diff = 0;
-          const double MAX_SPEED = 49.5;
-          const double MAX_ACC = 0.224;
-          if (ref_vel < MAX_SPEED){
-            speed_diff += MAX_ACC;
-          }
+
+
           /**
            * TODO: define a path made up of (x,y) points that the car will visit
            *   sequentially every .02 seconds

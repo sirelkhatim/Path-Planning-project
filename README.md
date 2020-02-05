@@ -143,3 +143,40 @@ still be compilable with cmake and make./
 ## How to write a README
 A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
 
+## Reflection
+
+### Methodology
+
+
+#### Prediction & Behaviour
+
+The part of the code that deals with behaviour and prediction is in lines 74 to 142. It starts by loading the localization variables. These include
+
+- x and y coordinates of our car
+- s and d values for our car (Frenet coordinates)
+- It also loads the yaw and speed of our car
+- previous values s and d coordinates
+- and list of all cars on the same side of the road
+- d value of each car
+
+we then use the d value of the car to figure out if the cars are on the same lane. The logic for the car is very simple:
+
+If the car is in lane 1 and there is a car in 30 distance radius from our car then do the following:
+
+- reduce the velocity by 0.7
+- set the too_close flag to True
+- and switch to lane 0 (if in lane 1), otherwise stay in the same lane
+
+#### Trajectory planning
+
+The code that does the trajectory planning can be found from lines 148 to 256.
+Step 1: The first two points of the previous trajectory are used with three more points at a distance to initialize the spine calculation (lines 155 - 182). The coordinates are transformed to local coordinates to make the calculations easier (lines 197 - 204).
+In order to ensure continuity past points are copied to the new trajectory (lines 216 to 220), the rest of the points are evaluated by calculating the spline and transforming it to local coordinates. The speed is adjusted to calculate trajectory points instead of doing it for the complete trajectory (lines 231 to 236).
+
+
+### Results
+
+As you can see in the picture below the car drives 7.01 miles without any incident. 
+
+[Screenshot of car driving wihtout incidences](screenshot-no-incidences.png)
+
